@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="az">
+
+<head>
+  <title>Oxu Dost</title>
+  <link rel="stylesheet" type="text/css" href="css/bootstrap.css">
+
+
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
+<script type='text/javascipt'>
+  $(document).ready(() => {
+   $('#sinif').onclick(() => {
+      console.log('inside myFunction')
+      $.ajax({
+        url: 'http://localhost:3000/teachers',
+
+        type: "GET",
+        dataType: 'json',
+        success: (data) => {
+
+          $('#status').html('All teachers: ' + data);
+        }
+      });
+    });
+  });
+  $(document).ajaxError(() => {
+    $('#status').html('Error: unknown ajaxError!');
+  });
+});
+</script>
+
+<body style="margin:30px">
+  <div class="container">
+
+    <a href="create class.html">"Sinif Yarat"</a>
+    <br>
+    <br>
+    <button id="sinif" type="button">Sinifi Göstər</button>
+
+
+
+
+  </div>
+
+  <div id="status">
+
+  </div>
+
+
+
+</body>
+
+</html>
